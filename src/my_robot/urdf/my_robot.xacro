@@ -91,7 +91,7 @@
         <box size="${chassis_length} ${chassis_width} ${chassis_height}"/>
       </geometry>
     </collision>
-    <xacro:box_inertia m="5" w="${chassis_width}" d="${chassis_length}" h="${chassis_height}"/>
+
   </link>
 
   <!-- Robot Footprint -->
@@ -133,7 +133,7 @@
   </joint>
 
   <!-- camera -->
-  <link name="camera1">
+  <link name="camera">
     <inertial>
       <mass value="${camera_mass}"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -154,8 +154,8 @@
   </link>
 
   <joint type="fixed" name="camera_joint">
-    <origin xyz="${chassis_length/2 - camera_length} 0 ${chassis_height/2 + camera_height/2}" rpy="0 0 0"/>
-    <child link="camera1"/>
+    <origin xyz="${chassis_length/2} 0 ${-chassis_height/2 + camera_height}" rpy="0 0 0"/>
+    <child link="camera"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
@@ -188,4 +188,17 @@
     <axis xyz="0 1 0" rpy="0 0 0"/>
   </joint>
 
+  <!-- Robot material/colour -->
+  <gazebo reference="camera">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="chassis">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
 </robot>

@@ -14,6 +14,7 @@
   <!-- Robot pose -->
   <!-- World File -->
   <arg name="world_file" default="$(find my_robot)/worlds/UdacityOffice.world"/>
+  <!-- <arg name="world_file" default="$(find my_robot)/worlds/empty.world"/> -->
 
   <!-- Launch Gazebo World -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -32,4 +33,6 @@
                          -x $(arg x) -y $(arg y) -z $(arg z)
                          -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
+  <!--launch rviz-->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" respawn="false"/> -->
 </launch>
